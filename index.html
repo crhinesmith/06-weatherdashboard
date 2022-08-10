@@ -7,6 +7,29 @@
   <title>Weather Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/css/jass.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="./assets/style.css"/>
 </head>
+
+<header>Weather Dashboard</header>
+<section class="container my-5 row">
+  <aside class="col-12 col-md-4 col-xl-3">
+    <h1>Search City:</h1>
+    <form id="search form" class="mb-2">
+      <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+      <button class="btn btn-info btn-block">Search</button>
+    </form>
+    <hr>
+    <ul></ul>
+  </aside>
+  <div class="forecast-container col-12 col-md-6 col-xl-8 d-flex justify-content-center">
+    <div class="today-forecast">
+      Today's forecast 
+    </div>
+
+    <div class="fiveDay-forecast">
+
+    </div>
+
+  </div>
+</section>

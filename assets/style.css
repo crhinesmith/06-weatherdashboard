@@ -1,0 +1,16 @@
+body {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background: #13293d;
+    color: #fff;
+    font-size: 50px; 
+    font-weight: bold;
+}
+
+.today-forecast {
+    border: 2px;
+}
