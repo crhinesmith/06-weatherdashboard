@@ -4,6 +4,7 @@ var previousCities = document.getElementById('previous-cities');
 var fiveDay = document.getElementById('fiveDay-forecast');
 var today = document.getElementById('today-forecast');
 var searchHistory = [];
+var forecastContainerEl = document.getElementById('forecast-container');
 
 
 
@@ -37,7 +38,6 @@ function handleSearchFormSubmit(event) {
     return;
   }
 
-  // what if I do have a city then what?
   getCityCurrentWeather(city);
   saveCitySearch(city);
 }
@@ -46,8 +46,12 @@ function handleSearchFormSubmit(event) {
 
 
 var getCityCurrentWeather = function (city) {
-  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+  while (today.firstChild){
+    today.removeChild(today.firstChild);
+  };
 
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+  
   fetch(queryURL)
     .then(function (response) {
       return response.json()
@@ -67,31 +71,30 @@ var getCityCurrentWeather = function (city) {
       console.log(cityLong);
       getCityUVIWeather(cityLat, cityLong);
 
+      var h1El = document.createElement('h1');
+      h1El.textContent = "Current Forecast"
+
       const currentDate = moment();
       var h2El = document.createElement('h2');
       h2El.textContent = data.name + " " + currentDate.format('MM-DD')
-      today.appendChild(h2El);
 
       var tempEl = document.createElement('p')
       tempEl.textContent = "Temp: " + data.main.temp + " F"
-      today.appendChild(tempEl)
 
       var humEl = document.createElement('p')
       humEl.textContent = "Humidity: " + data.main.humidity + " %"
-      today.appendChild(humEl)
 
       var windEl = document.createElement('p')
       windEl.textContent = "Wind: " + data.wind.speed + " MPH"
-      today.appendChild(windEl)
 
-
-
-
+      today.append(h1El, h2El, tempEl, humEl, windEl)
     })
-
-
 }
+
 var getCityUVIWeather = function (cityLat, cityLong) {
+  while (fiveDay.firstChild){
+    fiveDay.removeChild(fiveDay.firstChild);
+  };
   var queryCoordURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLong + "&units=imperial&exclude=minutely,hourly&appid=" + APIKey;
 
   fetch(queryCoordURL)
@@ -234,14 +237,9 @@ var getCityUVIWeather = function (cityLat, cityLong) {
       
       forecast5Card.append(date5El, temp5El, hum5El, wind5El, icon5El);
 
-
       fiveDay.append(forecast1Card, forecast2Card, forecast3Card, forecast4Card, forecast5Card);
     })
 }
-// function handleAndget () {
-//     handleSearchFormSubmit();
-//     // needs a param called city
 
-// }
 searchbtnEl.addEventListener('click', handleSearchFormSubmit);
 renderSearchHistory();
