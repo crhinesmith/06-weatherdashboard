@@ -9,27 +9,31 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">  
   <link rel="stylesheet" href="./assets/style.css"/>
-</head>
 
+</head>
+<body>
 <header>Weather Dashboard</header>
 <section class="container my-5 row">
   <aside class="col-12 col-md-4 col-xl-3">
     <h1>Search City:</h1>
-    <form id="search form" class="mb-2">
+    <form id="search-form" class="mb-2">
       <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-      <button class="btn btn-info btn-block">Search</button>
+      <button class="btn btn-info btn-block" id="search-btn">Search</button>
     </form>
     <hr>
-    <ul></ul>
+    <ul id="previous-cities"></ul>
   </aside>
   <div class="forecast-container col-12 col-md-6 col-xl-8 d-flex justify-content-center">
-    <div class="today-forecast">
-      Today's forecast 
+    <div id="today-forecast">
+      <h2> Current Forecast </h2>
     </div>
 
-    <div class="fiveDay-forecast">
-
+    <div id="fiveDay-forecast">
+      
     </div>
 
   </div>
 </section>
+<script  src="./assets/script.js"></script>
+</body>
+</html>
