@@ -37,7 +37,6 @@ function handleSearchFormSubmit(event) {
     console.error('You need a search input value!');
     return;
   }
-
   getCityCurrentWeather(city);
   saveCitySearch(city);
 }
